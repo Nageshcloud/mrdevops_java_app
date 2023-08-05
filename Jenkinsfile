@@ -44,10 +44,8 @@ pipeline{
             steps{
                script{
                    
-                dockerBuild(arg1, arg2, arg3)
-                def arg1 = "${params.hubusername}"
-                def arg2 = "${params.appname}"
-                def arg3 = "${params.tagname}"
+                dockerBuild("${params.hubusername}", "${params.appname}", "${params.imagetag}")
+    
                }
             }
         }
