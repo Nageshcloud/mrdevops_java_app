@@ -7,9 +7,9 @@ pipeline{
     parameters{
 
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
-        string(name: 'hubusername', description: 'specify docker hub username', defaultValue: 'nageshle204')
-        string(name: 'appname', description: 'specify application name', defaultValue: '')
-        string(name: 'imagetag', description: 'specify docker image tag', defaultValue: '2023')
+        string(name: 'hubusername', description: "specify docker hub username", defaultvalue: 'nageshle204')
+        string(name: 'appname', description: "specify application name", defaultvalue: '')
+        string(name: 'imagetag', description: "specify docker image tag", defaultvalue: '2023')
         
     }
 
