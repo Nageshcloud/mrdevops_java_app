@@ -7,6 +7,10 @@ pipeline{
     parameters{
 
         choice(name: 'action', choices: 'create\ndelete', description: 'Choose create/Destroy')
+        string(name: 'hubusername', description: 'specify docker hub username', defaultValue: 'nageshle204')
+        string(name: 'appname', description: 'specify application name', defaultValue: '')
+        string(name: 'imagetag', description: 'specify docker image tag', defaultValue: '2023')
+        
     }
 
     stages{
@@ -30,6 +34,20 @@ pipeline{
                script{
                    
                    mvnBuild()
+               }
+            }
+        }
+        stage('Build'){
+         
+         when { expression {  params.action == 'create' } }
+
+            steps{
+               script{
+                   
+                dockerBuild(arg1, arg2, arg3)
+                def arg1 = "${params.hubusername}"
+                def arg2 = "${params.appname}"
+                def arg3 = "${params.tagname}"
                }
             }
         }
