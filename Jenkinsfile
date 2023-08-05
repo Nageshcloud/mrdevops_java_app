@@ -49,6 +49,18 @@ pipeline{
                }
             }
         }
+        stage('docker image scan'){
+         
+         when { expression {  params.action == 'create' } }
+
+            steps{
+               script{
+                   
+                trivyScan("${params.hubusername}", "${params.appname}")
+    
+               }
+            }
+        }
        
     }
 }
