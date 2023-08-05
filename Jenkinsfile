@@ -61,6 +61,18 @@ pipeline{
                }
             }
         }
+         stage('docker push'){
+         
+         when { expression {  params.action == 'create' } }
+
+            steps{
+               script{
+                   
+                dockerPush("${params.hubusername}", "${params.appname}", "${params.imagetag}")
+    
+               }
+            }
+        }
        
     }
 }
