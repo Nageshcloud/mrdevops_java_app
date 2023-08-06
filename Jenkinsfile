@@ -1,3 +1,5 @@
+@Library('shared_lib_practice') _
+
 pipeline {
 
     agent any
